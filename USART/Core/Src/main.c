@@ -99,53 +99,53 @@ int main(void)
 	  uint8_t rcvBuf[1];
 	  HAL_StatusTypeDef result;
 
-	  result = HAL_UART_Receive(&huart1, rcvBuf, 1, 10);
+	  result = HAL_UART_Receive(&huart1, rcvBuf, 1, 100);
 
 	  if (result == HAL_OK) {
 		  switch(rcvBuf[0]) {
 		  	  case '1':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN ON\n", 11, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN ON\n\r", 12, 100);
 				  break;
 		  	  case '2':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN OFF\n", 12, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN OFF\n\r", 13, 100);
 				  break;
 		  	  case '3':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -ORANGE ON\n", 12, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -ORANGE ON\n\r", 13, 100);
 				  break;
 		  	  case '4':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -ORANGE OFF\n", 13, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -ORANGE OFF\n\r", 14, 100);
 				  break;
 		  	  case '5':
 		  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
-		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -RED ON\n", 9, 100);
+		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -RED ON\n\r", 10, 100);
 		  		  break;
 		  	  case '6':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -RED OFF\n", 10, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -RED OFF\n\r", 11, 100);
 				  break;
 		  	  case '7':
 		  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
-		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -BLUE ON\n", 10, 100);
+		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -BLUE ON\n\r", 11, 100);
 		  		  break;
 		  	  case '8':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -BLUE OFF\n", 11, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -BLUE OFF\n\r", 12, 100);
 				  break;
 		  	  case 'a':
 		  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_SET);
-		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -ALL ON\n", 9, 100);
+		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -ALL ON\n\r", 10, 100);
 		  		  break;
 		  	  case 's':
 		  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -ALL OFF\n", 10, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -ALL OFF\n\r", 11, 100);
 				  break;
 
 		  	  default:
-		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -WRONG COMMAND\n", 16, 100);
+		  		  HAL_UART_Transmit(&huart1, (uint8_t *)" -WRONG COMMAND\n\r", 17, 100);
 		  		  break;
 
 		  }
@@ -245,6 +245,7 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
