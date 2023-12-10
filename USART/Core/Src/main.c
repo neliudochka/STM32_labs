@@ -105,11 +105,11 @@ int main(void)
 		  switch(rcvBuf[0]) {
 		  	  case '1':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN ON\n", 12, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN ON\n", 11, 100);
 				  break;
 		  	  case '2':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN OFF\n", 13, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -GREEN OFF\n", 12, 100);
 				  break;
 		  	  case '3':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
@@ -125,7 +125,7 @@ int main(void)
 		  		  break;
 		  	  case '6':
 				  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)" -RED OFF\n", 11, 100);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)" -RED OFF\n", 10, 100);
 				  break;
 		  	  case '7':
 		  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
